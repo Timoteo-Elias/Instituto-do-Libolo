@@ -41,6 +41,10 @@
                 header("Location: App/Views/professor/index.php");
                 exit();
             }
+            if(htmlspecialchars($_SESSION['usuario_logged']['perfil'])=="secretaria"){
+                header("Location: App/Views/secretaria/index.php");
+                exit();
+            }
             else{
                 header("Location: index.php");
                 exit();

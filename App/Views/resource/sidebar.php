@@ -55,12 +55,12 @@
             }elseif($_SESSION['usuario_logged']['perfil'] == 'secretaria'){  
         ?>
             <li><a href="index.php"><i class="bi bi-house-fill"></i> Dashboard</a></li>
-            <li><a href=""><i class="bi bi-mortarboard-fill"></i> Cursos</a></li>
-            <li><a href=""><i class="bi bi-person-badge-fill"></i> Professores</a></li>
-            <li><a href=""><i class="bi bi-book-fill"></i> Turmas</a></li>
-            <li><a href=""><i class="bi bi-building-fill"></i> Faculdades</a></li>
+            <li><a href=""><i class="bi bi-file-earmark-text-fill"></i> Matrículas</a></li>
+            <li><a href=""><i class="bi bi-person-fill"></i> Estudantes</a></li>
+            <li><a href=""><i class="bi bi-file-earmark-pdf-fill"></i> Documentos</a></li>
+            <li><a href=""><i class="bi bi-file-earmark-word-fill"></i> Atendimentos</a></li>
+            <li><a href=""><i class="bi bi-folder-fill"></i> Arquivos</a></li>
             <li><a href=""><i class="bi bi-bar-chart-fill"></i> Relatórios</a></li>
-            <li><a href=""> <i class="bi bi-gear-fill"></i></i> Configuracoes</a></li>
         <?php
             }elseif($_SESSION['usuario_logged']['perfil'] == 'contabilidade'){  
         ?>
