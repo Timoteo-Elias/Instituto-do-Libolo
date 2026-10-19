@@ -1,3 +1,10 @@
+<?php
+    include_once(__DIR__ . '/../resource/auth.php');
+    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,18 +21,7 @@
         <?php include_once '../resource/sidebar.php' ?>
 
         <div class="section" style="">
-            <div class="d-flex justify-content-between align-items-center p-2 bg-light header">
-                <div>
-                </div>
-                
-                <div class="d-flex">
-                    <img class="rounded-circle me-1" height="40" width="40" src="../../../Public/IMG/helitech.jpg" alt="">
-                    <a class="nav-link text-dark text-center pt-0 ps-0" href="">
-                    <p style="font-size: 14px" class="mb-0 pb- fw-bolder">Contabilista</p>
-                    <p style="font-size: 10px" class="pt-0 mt-0 mb-0 pb-0">Andre@insituto.com</p>
-                    </a>
-                </div>
-            </div>
+            <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
                     <div class="d-flex">
@@ -34,7 +30,7 @@
                         </div>
                         <div>
                             <h5 class="text-primary fw-bolder mt-2 mb-0 pb-0">Departamento de Contabilidade</h5>
-                            <small class="mt-0 pt-0 text-secondary" style="font-size:12px">Andre Domingos</small>
+                            <small class="mt-0 pt-0 text-secondary" style="font-size:12px"><?php echo isset($_SESSION['usuario_logged']['nome']) ? htmlspecialchars($_SESSION['usuario_logged']['nome']) : 'Not Found'; ?></small>
                         </div>
                     </div>
                     

@@ -1,3 +1,10 @@
+<?php
+    include_once(__DIR__ . '/../resource/auth.php');
+    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +30,7 @@
                         </div>
                         <div>
                             <h5 class="text-primary fw-bolder mt-2">Dashboard do Professor</h5>
+                            <small class="mt-0 pt-0 text-secondary" style="font-size:12px"><?php echo isset($_SESSION['usuario_logged']['nome']) ? htmlspecialchars($_SESSION['usuario_logged']['nome']) : 'Not Found'; ?></small>
                         </div>
                     </div>
                     

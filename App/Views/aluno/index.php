@@ -1,3 +1,10 @@
+<?php
+    include_once(__DIR__ . '/../resource/auth.php');
+    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -4,7 +4,6 @@
     box-sizing:border-box;
 }
 body{
-
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 }
@@ -84,7 +83,7 @@ h6{
     display:none;
      list-style:none;
 }
-table thead, tbody{
+.card table thead, tbody{
     font-size: 10px;
 }
  /* TABLET */
