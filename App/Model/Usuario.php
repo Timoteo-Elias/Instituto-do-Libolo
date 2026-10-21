@@ -5,6 +5,7 @@ class Usuario
 {
     private int $id;
     private string $nome;
+    private string $senha;
     private string $email;
     private string $perfil;
     private string $imagem;
