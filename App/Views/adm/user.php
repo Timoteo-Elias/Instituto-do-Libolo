@@ -2,11 +2,11 @@
     
     include_once(__DIR__ . '/../resource/auth.php');
     require_once __DIR__ . '/../../Controller/UsuarioController.php';
-    require_once __DIR__ . '/../../Model/Dao/usuarioDao.php';
+    require_once __DIR__ . '/../../Model/DAO/UsuarioDAO.php';
     require_once __DIR__ . '/../../Model/Usuario.php';
     use Model\Usuario;
     $usuarioDao = new UsuarioDao(); 
-    $UsuarioController = new UsuarioController($usuarioDao);
+    $UsuarioController = new UsuarioController($usuarioDao );
     $usuario = $UsuarioController->index(); 
     
     if (session_status() === PHP_SESSION_NONE) {
@@ -90,7 +90,7 @@
                                 <a href="add_user.php" class="btn btn-sm btn-success"> <i class="bi bi-plus"></i> Novo Usuário</a>
                             </div>
                         </div>
-                        <table class="table table-striped table-dark mt-2">
+                        <table class="table align-middle table-sm table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
