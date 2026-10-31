@@ -30,7 +30,7 @@
             }
         }
        
-        public function findByEmail($email) {
+        public function findByEmail(string $email) {
             $sql = "SELECT * FROM usuario WHERE email = ?";
             $res = Connect::getConn()->prepare($sql);
             $res->bindValue(1, $email);
@@ -50,14 +50,14 @@
             return $usuario;
         }
 
-        public function delete($id){
+        public function delete(int $id){
             $sql = "DELETE FROM usuario WHERE id_user = ?";
             $res = Connect::getConn()->prepare($sql);
             $res->bindParam(1, $id);
             $res->execute();
         }
 
-        public function getById($id){
+        public function getById(int $id){
             $sql = "SELECT * FROM usuario WHERE id_user = $id";
             $res = Connect::getConn()->query($sql);
             $usuario = $res->rowCount()>0 ? $res->fetch() : [];

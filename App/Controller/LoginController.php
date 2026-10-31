@@ -1,15 +1,15 @@
 <?php
     require_once __DIR__ . '/../Model/Usuario.php';
-    require_once __DIR__ . '/../Model/Dao/UsuarioDao.php';
+    require_once __DIR__ . '/../Model/DAO/UsuarioDAO.php';
 
     class LoginController {
-        private $usuarioDao;
+        private UsuarioDAO $usuarioDao;
 
         public function __construct() {
             $this->usuarioDao = new UsuarioDao();
         }
 
-        public function login($email, $senha) {
+        public function login(string $email, string $senha) {
             $usuario = $this->usuarioDao->findByEmail($email);
 
             if (empty($email) || empty($senha)) {

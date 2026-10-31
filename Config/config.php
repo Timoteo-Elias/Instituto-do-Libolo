@@ -1,6 +1,6 @@
 <?php
     class Connect{
-        private static $conn;
+        private static PDO $conn;
 
         /**
          * @return PDO
@@ -11,7 +11,7 @@
 
                 try {
                     self::$conn = new PDO(
-                        "mysql:host=localhost;dbname=ISP-Libolo;charset=utf8mb4",
+                        "mysql:host=localhost;dbname=isp-libolo;charset=utf8mb4",
                         "root",
                         ""
                     );

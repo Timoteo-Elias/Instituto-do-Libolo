@@ -2,11 +2,11 @@
     
     include_once(__DIR__ . '/../resource/auth.php');
     require_once __DIR__ . '/../../Controller/UsuarioController.php';
-    require_once __DIR__ . '/../../Model/Dao/usuarioDao.php';
+    require_once __DIR__ . '/../../Model/DAO/UsuarioDAO.php';
     require_once __DIR__ . '/../../Model/Usuario.php';
     use Model\Usuario;
     $usuarioDao = new UsuarioDao(); 
-    $UsuarioController = new UsuarioController($usuarioDao);
+    $UsuarioController = new UsuarioController();
     $usuario = $UsuarioController->index(); 
     
     if (session_status() === PHP_SESSION_NONE) {
@@ -106,7 +106,12 @@
                                         <td><?= $trim['nome'] ?></td>
                                         <td><?= $trim['email'] ?></td>
                                         <td><?= $trim['perfil'] ?></td>
-                                        <td><img src="../../uploads/<?= $trim['foto'] ?>" alt="tt" width="25"></td>
+                                        <td> 
+                                            <?php if (empty($trim['foto'])): ?>
+                                                <i class="bi bi-person-fill fs-5"></i>
+                                            <?php else: ?>
+                                                <img src="../../uploads/<?= $trim['foto'] ?>" width="25"></td>
+                                            <?php endif;?>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"> </i></a>
                                             <a href="edit_usuario.php?id=<?= $trim['id_user'] ?>" class="btn btn-sm btn-success"><i class="bi bi-pen-fill"></i></a>
@@ -120,7 +125,6 @@
                 </div>
             </div>
         </div>
-
         <?php include_once '../resource/mobile.php' ?>
     </section>
 </body>

@@ -1,10 +1,12 @@
 <?php
-    use Model\Usuario\Dao;
+    //use Model\DAO;
+    require_once __DIR__.'/../Model/DAO/UsuarioDAO.php';
+
     use Model\Usuario;
     
     class UsuarioController{
-        private $usuarioDao;
-        private $usuario;
+        private UsuarioDAO $usuarioDao;
+        private Usuario $usuario;
 
         public function __construct(){
             $this->usuarioDao = new UsuarioDao();
@@ -16,7 +18,7 @@
             return $usuario;
         }
         //Cadastramento do usuario
-        public function insert($nome, $email, $perfil, $senha) {
+        public function insert(string $nome, string $email, string $perfil, string $senha) {
             try {    
                 //Verificar se o email já existe
                 if ($this->usuarioDao->findByEmail($email)) {
@@ -39,7 +41,7 @@
                 $this->usuario->setPerfil($perfil);
                 $this->usuario->setSenha($senha);
 
-                $nomeImagemFinal = null;
+                $nomeImagemFinal = '';
 
                 if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['error'] === UPLOAD_ERR_OK) {
                     
@@ -58,7 +60,7 @@
                         }
 
                         if (!move_uploaded_file($tmpName, $pastaDestino . $nomeImagemFinal)) {
-                            $nomeImagemFinal = null;
+                            $nomeImagemFinal = '';
                         }
                     }
                 }
@@ -74,7 +76,7 @@
             }
         }
 
-        public function Delete($id){
+        public function Delete(int $id){
             $idSanitizado = (int) $id;
 
             if($idSanitizado <= 0){
@@ -83,7 +85,7 @@
             $this->usuarioDao->delete($id);
         }
 
-        public function getForId($id){
+        public function getForId(int $id){
             return $this->usuarioDao->getById($id);
         }
 
