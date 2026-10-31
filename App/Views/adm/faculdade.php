@@ -36,33 +36,56 @@
                     
                 </div>
                 <div class="mt-4">
-                    <div>
-                        <h4>Faculdades Disponiveis</h4>
-                    </div>
-        
-                    <div class="table-responsive ">
-                        <table class="table table-striped">
-                            <thead class="text-primary" style="background:azure;">
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Nome</th>
-                                    <th></th>
-                                    <th>Data</th>
-                                    <th>Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody >
-                                <tr class="text-secondary">
-                                    <td>Requerimento</td>
-                                    <td>Declaração de frequência</td>
-                                    <td>João Domingos</td>
-                                    <td>12-03-2026</td> 
-                                    <td>Em análise</td> 
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
+                            <h4 class="text-primary">Faculdades Disponíveis</h4>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                            <form action="" method="POST" class="w-100">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar Faculdade pelo Nome ou Codigo" aria-label="Username" aria-describedby="basic-addon1">
+                                    <button class="btn btn-sm btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 text-end mb-3">
+                            <a href="add_faculdade.php" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Adicionar</a>
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-printer-fill"></i> Imprimir</button>
+                        </div>
                     </div>
                 </div>
+        
+                <div class="table-responsive mt-2">
+                    <table class="table align-middle table-sm table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nome da Faculdade</th>
+                                <th>Decano</th>
+                                <th>Vice Decano/Acadêmica</th>
+                                <th>Vice Decano/Científica</th>
+                                <th>Data de Abertura</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr class="fs-6">
+                                <td>FD-001</td>
+                                <td>Direiro</td>
+                                <td>João Domingos</td>
+                                <td>João Neves</td> 
+                                <td>Laurinda Claudia</td> 
+                                <td>24-04-2004</td> 
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                    <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
             </div>
         </div>
 

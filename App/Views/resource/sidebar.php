@@ -34,7 +34,7 @@
             }elseif($_SESSION['usuario_logged']['perfil'] == 'coordenador'){
         ?>
             <li><a href="index.php"><i class="bi bi-house-fill"></i> Dashboard</a></li>
-            <li><a href=""><i class="bi bi-building-fill"></i> Cursos</a></li>
+            <li><a href="curso.php"><i class="bi bi-building-fill"></i> Cursos</a></li>
             <li><a href=""><i class="bi bi-book-fill"></i> Turmas</a></li>
             <li><a href=""><i class="bi bi-people-fill"></i> Estudantes</a></li>
             <li><a href=""><i class="bi bi-person-badge-fill"></i> Professores</a></li>
