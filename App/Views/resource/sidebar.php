@@ -16,7 +16,8 @@
             <li><a href=""><i class="bi bi-mortarboard-fill"></i> Cursos</a></li>
             <li><a href=""><i class="bi bi-person-badge-fill"></i> Professores</a></li>
             <li><a href=""><i class="bi bi-people-fill"></i> Turmas</a></li>
-            <li><a href=""><i class="bi bi-building-fill"></i> Faculdades</a></li>
+            <li><a href="faculdade.php"><i class="bi bi-building-fill"></i> Faculdades</a></li>
+            <li><a href="funcionario.php"><i class="bi bi-person-standing"></i> Funcionários</a></li>
             <li><a href="user.php"><i class="bi bi-person-fill"></i> Usuarios</a></li>
             <li><a href=""> <i class="bi bi-gear-fill"></i></i> Configuracoes</a></li>
         <?php

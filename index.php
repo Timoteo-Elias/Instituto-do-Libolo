@@ -23,12 +23,12 @@ if (session_status() === PHP_SESSION_NONE) {
 <div class="container d-flex justify-content-center">
     <div class="card p-4 shadow-sm border-0" style="width: 100%; max-width: 400px; border-radius: 8px;">
         
-        <div class=" mb-2 d-flex justify-content-center">
+        <div class=" mb-2 d-flex">
             <div>
                 <h1 class="text-primary  pe-1 me-2 fw-bold border-end"><i class="bi bi-mortarboard-fill"></i></h1>
             </div>
             <div>
-                <h3 class="fw-bold text-primary pb-0 mb-0">ISP LIBOLO</h3>
+                <h3 class="fw-bold text-primary pb-0 mb-0">ISPTLO</h3>
                 <p class="text-muted small">Portal Acadêmico</p>
             </div>
         </div>
