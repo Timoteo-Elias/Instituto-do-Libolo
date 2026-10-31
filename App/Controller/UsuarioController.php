@@ -3,13 +3,6 @@
     require_once __DIR__.'/../Model/DAO/UsuarioDAO.php';
 
     use Model\Usuario;
-<<<<<<< HEAD
-    
-    class UsuarioController{
-        private UsuarioDAO $usuarioDao;
-        private Usuario $usuario;
-=======
->>>>>>> 37641a7ab29488195238196ea582346769cb0766
 
     class UsuarioController {
         private UsuarioDao $usuarioDao;
@@ -22,14 +15,10 @@
         public function index() {
             return $this->usuarioDao->read();
         }
-<<<<<<< HEAD
+
         //Cadastramento do usuario
         public function insert(string $nome, string $email, string $perfil, string $senha) {
-=======
 
-        // Cadastramento do usuário
-        public function insert($nome, $email, $perfil, $senha) {
->>>>>>> 37641a7ab29488195238196ea582346769cb0766
             try {    
                 // Verificar se o e-mail já existe
                 if ($this->usuarioDao->findByEmail($email)) {
@@ -92,11 +81,8 @@
             }
         }
 
-<<<<<<< HEAD
+
         public function Delete(int $id){
-=======
-        public function delete($id) {
->>>>>>> 37641a7ab29488195238196ea582346769cb0766
             $idSanitizado = (int) $id;
 
             if ($idSanitizado <= 0) {
@@ -107,11 +93,7 @@
             return $this->usuarioDao->delete($idSanitizado);
         }
 
-<<<<<<< HEAD
         public function getForId(int $id){
-=======
-        public function getForId($id) {
->>>>>>> 37641a7ab29488195238196ea582346769cb0766
             return $this->usuarioDao->getById($id);
         }
     }

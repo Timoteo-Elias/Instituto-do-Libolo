@@ -12,7 +12,7 @@
                 try {
                     self::$conn = new PDO(
                         "mysql:host=localhost;dbname=isp-libolo;charset=utf8mb4",
-                        "root",
+                        "dev",
                         ""
                     );
                     self::$conn->setAttribute(

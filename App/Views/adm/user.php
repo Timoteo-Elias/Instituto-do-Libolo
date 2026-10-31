@@ -6,11 +6,7 @@
     require_once __DIR__ . '/../../Model/Usuario.php';
     use Model\Usuario;
     $usuarioDao = new UsuarioDao(); 
-<<<<<<< HEAD
-    $UsuarioController = new UsuarioController();
-=======
     $UsuarioController = new UsuarioController($usuarioDao );
->>>>>>> 37641a7ab29488195238196ea582346769cb0766
     $usuario = $UsuarioController->index(); 
     
     if (session_status() === PHP_SESSION_NONE) {
