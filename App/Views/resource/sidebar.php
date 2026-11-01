@@ -35,7 +35,7 @@
         ?>
             <li><a href="index.php"><i class="bi bi-house-fill"></i> Dashboard</a></li>
             <li><a href="curso.php"><i class="bi bi-building-fill"></i> Cursos</a></li>
-            <li><a href=""><i class="bi bi-book-fill"></i> Turmas</a></li>
+            <li><a href="turma.php"><i class="bi bi-book-fill"></i> Turmas</a></li>
             <li><a href=""><i class="bi bi-people-fill"></i> Estudantes</a></li>
             <li><a href=""><i class="bi bi-person-badge-fill"></i> Professores</a></li>
             <li><a href=""><i class="bi bi-file-earmark-text-fill"></i> Matrículas</a></li>
@@ -56,8 +56,8 @@
             }elseif($_SESSION['usuario_logged']['perfil'] == 'secretaria'){  
         ?>
             <li><a href="index.php"><i class="bi bi-house-fill"></i> Dashboard</a></li>
-            <li><a href=""><i class="bi bi-file-earmark-text-fill"></i> Matrículas</a></li>
-            <li><a href=""><i class="bi bi-person-fill"></i> Estudantes</a></li>
+            <li><a href="matricula.php"><i class="bi bi-file-earmark-text-fill"></i> Matrículas</a></li>
+            <li><a href="estudantes.php"><i class="bi bi-person-fill"></i> Estudantes</a></li>
             <li><a href=""><i class="bi bi-file-earmark-pdf-fill"></i> Documentos</a></li>
             <li><a href=""><i class="bi bi-file-earmark-word-fill"></i> Atendimentos</a></li>
             <li><a href=""><i class="bi bi-folder-fill"></i> Arquivos</a></li>

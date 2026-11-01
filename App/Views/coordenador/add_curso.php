@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../../Public/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../../Public/CSS/style.css">
     <link rel="stylesheet" href="../../../Public/JS/action.js">
-    <title>Cadastro de Funcionário</title>
+    <title>Cadastro do Curso</title>
 </head>
 <body>
     <section class="wrapper">
@@ -37,13 +37,17 @@
                                         <label class="form-label fw-bold">Curso *</label>
                                         <input type="text" name="curso" class="form-control" placeholder="Ex: Contabilidadena frenquanla!" required>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-2">
                                         <label class="form-label fw-bold">Duração da formação*</label>
-                                        <input type="text" name="curso" class="form-control" placeholder="Ex: Contabilidadena frenquanla!" required>
+                                        <select name="duracao" class="form-select" required>
+                                            <option value="">Selecione o gênero</option>
+                                            <option value="4 anos">4 anos</option>
+                                            <option value="5 anos">5 anos</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-2">
                                         <label class="form-label fw-bold">Data de Abertura*</label>
-                                        <input type="text" name="curso" class="form-control" placeholder="Ex: Contabilidadena frenquanla!" required>
+                                        <input type="date" name="curso" class="form-control" placeholder="Ex: Contabilidadena frenquanla!" required>
                                     </div>
                                     
                                 </div>
