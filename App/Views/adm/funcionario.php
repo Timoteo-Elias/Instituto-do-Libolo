@@ -1,5 +1,12 @@
 <?php
     include_once(__DIR__ . '/../resource/auth.php');
+    require_once __DIR__ . '/../../Controller/FuncionarioController.php';
+    require_once __DIR__ . '/../../Model/DAO/FuncionarioDao.php';
+    require_once __DIR__ . '/../../Model/Funcionario.php';
+    use Model\Funcionario;
+    $FucionarioDao = new FuncionarioDao(); 
+    $FuncionarioController = new FuncionarioController($FucionarioDao);
+    $Funcionario = $FuncionarioController->index(); 
     
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -20,7 +27,7 @@
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section">
             <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
@@ -71,21 +78,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($Funcionario as $trim): ?>
                             <tr class="fs-6">
-                                <td>F001</td>
-                                <td>John Doe</td>
-                                <td>123456789</td>
-                                <td>Tecnologias de Informação</td>
-                                <td>PHD</td>
-                                <td>Decano</td>
-                                <td>john.doe@example.com</td>
-                                <td>987654321</td>
+                                <td><?= $trim['codigo'] ?></td>
+                                <td><?= $trim['nome'] ?></td>
+                                <td><?= $trim['nif'] ?></td>
+                                <td><?= $trim['formacao'] ?></td>
+                                <td><?= $trim['nivel'] ?></td>
+                                <td><?= $trim['funcao'] ?></td>
+                                <td><?= $trim['email'] ?></td>
+                                <td><?= $trim['telefone'] ?></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                     <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye"></i></button>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

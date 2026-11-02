@@ -1,4 +1,13 @@
 <?php 
+    include_once(__DIR__ . '/../resource/auth.php');
+    require_once __DIR__ . '/../../Controller/UsuarioController.php';
+    require_once __DIR__ . '/../../Model/DAO/UsuarioDAO.php';
+    require_once __DIR__ . '/../../Model/Usuario.php';
+    use Model\Usuario;
+    $usuarioDao = new UsuarioDao(); 
+    $UsuarioController = new UsuarioController($usuarioDao );
+    $usuario = $UsuarioController->index(); 
+
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -18,7 +27,7 @@
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section" >
             <?php include_once '../resource/header.php'?>
             <div class="container p-2 body">
                 <div class="mt-2" style="overflow-y: auto; max-height: 500px;">
@@ -27,12 +36,12 @@
                             <h4 class="mb-0">Cadastrar Novo Funcionário </h4>
                         </div>
                         <div class="card-body">
-                            <form action="../../CPU/CPU_User.php" method="POST" enctype="multipart/form-data" >
+                            <form action="../../CPU/CPU_Funcionario.php" method="POST" enctype="multipart/form-data" >
                                 <h6 class="bg-secondary form-label fw-bold p-1 text-white text-center">Dados pessoais</h6>
                                 <div class="row mb-3">
                                     <div class="col-md-2 mb-2">
                                         <label class="form-label fw-bold">Código</label>
-                                        <input type="text" name="codigo" class="form-control " placeholder="F001" disabled>
+                                        <input type="text" name="codigo" class="form-control " placeholder="FU-0001" disabled>
                                     </div>
                                     <div class="col-md-10 mb-2">
                                         <label class="form-label fw-bold">Nome Completo *</label>
@@ -40,11 +49,11 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label class="form-label fw-bold">NIF/BI *</label>
-                                        <input type="text" name="nif" class="form-control" placeholder="joseaugusto@gmail.com" required>
+                                        <input type="text" name="nif" class="form-control" placeholder="NIF / BI" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label class="form-label fw-bold">Gênero *</label>
-                                        <select name="perfil" class="form-select" required>
+                                        <select name="genero" class="form-select" required>
                                             <option value="">Selecione o gênero</option>
                                             <option value="Masculino">Masculino</option>
                                             <option value="Femenino">Feminino</option>
@@ -88,6 +97,19 @@
                                     <div class="col-md-6 mb-2">
                                         <label class="form-label fw-bold">Email *</label>
                                         <input type="email" name="email" class="form-control" placeholder="Endereço de email" required>
+                                    </div>
+
+                                    <div class="col-md-4 mb-2">
+                                        <label class="form-label fw-bold">Usuario*</label>
+                                        
+                                        <select name="usuario" class="form-select" required>
+                                            <option value="">Selecionar utilizador</option>
+                                            <option value="0">Sem acesso</option>
+                                            <?php foreach($usuario as $trim):?>
+                                            <option value="<?= $trim['id_user'] ?>"><?= $trim['nome'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        
                                     </div>
                                 </div>
 

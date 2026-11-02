@@ -4,6 +4,7 @@
     class Funcionario
     {
         private int $id;
+        private ?int $usuario;
         private string $codigo;
         private string $nome;
         private string $nif;
@@ -16,6 +17,17 @@
         private string $telefone;
         private string $imagem;
 
+        //usuario
+        public function getUsuario():?int
+        {
+            return $this->usuario;
+        }
+
+        public function setUsuario(?int $usuario):void
+        {
+            $this->usuario = $usuario;
+        }
+        
         // ID
         public function getId():int
         {
