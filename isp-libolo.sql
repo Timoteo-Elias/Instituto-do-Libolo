@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.3
+-- version 5.2.1deb3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Tempo de geração: 23-Out-2026 às 20:28
--- Versão do servidor: 8.0.30
--- versão do PHP: 8.1.10
+-- Host: localhost:3306
+-- Tempo de geração: 08-Nov-2026 às 09:11
+-- Versão do servidor: 8.0.46-0ubuntu0.24.04.4
+-- versão do PHP: 8.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,62 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dados: `isp-libolo`
+-- Banco de dados: `isp-libolo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `faculdade`
+--
+
+CREATE TABLE `faculdade` (
+  `id_faculdade` int NOT NULL,
+  `faculdade` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `codigo` varchar(255) NOT NULL,
+  `data_abertura` timestamp NULL DEFAULT NULL,
+  `decano` int NOT NULL,
+  `vice_decano_academica` int NOT NULL,
+  `vice_decano_cientifica` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `faculdade`
+--
+
+INSERT INTO `faculdade` (`id_faculdade`, `faculdade`, `codigo`, `data_abertura`, `decano`, `vice_decano_academica`, `vice_decano_cientifica`) VALUES
+(1, 'Direito', 'FD-0001', '2000-12-31 23:00:00', 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `funcionario`
+--
+
+CREATE TABLE `funcionario` (
+  `id_funcionario` int NOT NULL,
+  `codigo` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `nome` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `nif` varchar(14) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `genero` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `data_nascimento` date NOT NULL,
+  `formacao` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `nivel` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `funcao` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `imagem` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `telefone` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_atualizado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `usuario` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Extraindo dados da tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`id_funcionario`, `codigo`, `nome`, `nif`, `genero`, `data_nascimento`, `formacao`, `nivel`, `funcao`, `imagem`, `email`, `telefone`, `data_cadastro`, `data_atualizado`, `usuario`) VALUES
+(1, 'FU-0001', 'Paulo Victor Armando', '940523444', 'Masculino', '2026-11-04', 'Professor', 'Licenciatura', 'Professor', '', 'paulovictorarmando@hotmail.com', '940523444', '2026-11-06 13:51:21', '2026-11-06 13:51:21', 3);
 
 -- --------------------------------------------------------
 
@@ -29,11 +83,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `usuario` (
   `id_user` int NOT NULL,
-  `nome` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
-  `perfil` enum('admin','secretaria','contabilidade','coordenador','professor','aluno') COLLATE utf32_unicode_ci NOT NULL,
-  `senha` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
+  `nome` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `perfil` enum('admin','secretaria','contabilidade','coordenador','professor','aluno') CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `senha` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
@@ -54,6 +108,22 @@ INSERT INTO `usuario` (`id_user`, `nome`, `email`, `perfil`, `senha`, `foto`, `d
 --
 
 --
+-- Índices para tabela `faculdade`
+--
+ALTER TABLE `faculdade`
+  ADD PRIMARY KEY (`id_faculdade`),
+  ADD KEY `decano` (`decano`),
+  ADD KEY `vice_decano_academica` (`vice_decano_academica`),
+  ADD KEY `vice_decano_cientifica` (`vice_decano_cientifica`);
+
+--
+-- Índices para tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD PRIMARY KEY (`id_funcionario`),
+  ADD KEY `usuario` (`usuario`);
+
+--
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -64,10 +134,40 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `faculdade`
+--
+ALTER TABLE `faculdade`
+  MODIFY `id_faculdade` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  MODIFY `id_funcionario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `faculdade`
+--
+ALTER TABLE `faculdade`
+  ADD CONSTRAINT `faculdade_ibfk_1` FOREIGN KEY (`decano`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `faculdade_ibfk_2` FOREIGN KEY (`vice_decano_academica`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `faculdade_ibfk_3` FOREIGN KEY (`vice_decano_cientifica`) REFERENCES `funcionario` (`id_funcionario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
