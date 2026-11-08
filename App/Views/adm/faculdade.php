@@ -1,5 +1,22 @@
 <?php
     include_once(__DIR__ . '/../resource/auth.php');
+
+    require_once __DIR__ . '/../../Controller/FaculdadeController.php';
+    require_once __DIR__ . '/../../Model/DAO/FaculdadeDao.php';
+    require_once __DIR__ . '/../../Model/Faculdade.php';
+    require_once __DIR__ . '/../../Model/DAO/FuncionarioDao.php';
+
+
+    $FaculdadeDao = new FaculdadeDao(); 
+    $FaculdadeController = new FaculdadeController($FaculdadeDao);
+    $faculdade = $FaculdadeController->index();
+    $funcionarioDao = new FuncionarioDao();
+
+    function getName(FuncionarioDao $funcionarioDao, int $id): string
+    {
+        $func = $funcionarioDao->getById($id);
+        return $func['nome'];
+    }
     
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -20,7 +37,7 @@
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section">
             <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
@@ -69,19 +86,21 @@
                             </tr>
                         </thead>
                         <tbody >
+                            <?php foreach($faculdade as $trim): ?>
                             <tr class="fs-6">
-                                <td>FD-001</td>
-                                <td>Direiro</td>
-                                <td>João Domingos</td>
-                                <td>João Neves</td> 
-                                <td>Laurinda Claudia</td> 
-                                <td>24-04-2004</td> 
+                                <td><?= $trim['codigo'] ?></td>
+                                <td><?= $trim['faculdade'] ?></td>
+                                <td><?= getName($funcionarioDao, $trim['decano']) ?></td>
+                                <td><?= getName($funcionarioDao, $trim['vice_decano_academica']) ?></td>
+                                <td><?= getName($funcionarioDao, $trim['vice_decano_cientifica']) ?></td>
+                                <td><?= $trim['data_abertura'] ?></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                     <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye"></i></button>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

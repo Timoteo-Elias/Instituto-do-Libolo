@@ -2,6 +2,7 @@
     include_once(__DIR__ . '/../resource/auth.php');
     require_once __DIR__ . '/../../Controller/UsuarioController.php';
     require_once __DIR__ . '/../../Model/DAO/UsuarioDAO.php';
+    require_once __DIR__ . '/../../Model/DAO/FuncionarioDao.php';
     require_once __DIR__ . '/../../Model/Usuario.php';
     use Model\Usuario;
     $usuarioDao = new UsuarioDao(); 
@@ -41,7 +42,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-2 mb-2">
                                         <label class="form-label fw-bold">Código</label>
-                                        <input type="text" name="codigo" class="form-control " placeholder="FU-0001" disabled>
+                                        <input type="text" name="codigo" class="form-control " value="<?= FuncionarioDao::getCod() ?>" disabled>
                                     </div>
                                     <div class="col-md-10 mb-2">
                                         <label class="form-label fw-bold">Nome Completo *</label>
