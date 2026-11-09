@@ -10,13 +10,6 @@
     $FaculdadeDao = new FaculdadeDao(); 
     $FaculdadeController = new FaculdadeController($FaculdadeDao);
     $faculdade = $FaculdadeController->index();
-    $funcionarioDao = new FuncionarioDao();
-
-    function getName(FuncionarioDao $funcionarioDao, int $id): string
-    {
-        $func = $funcionarioDao->getById($id);
-        return $func['nome'];
-    }
     
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -90,9 +83,9 @@
                             <tr class="fs-6">
                                 <td><?= $trim['codigo'] ?></td>
                                 <td><?= $trim['faculdade'] ?></td>
-                                <td><?= getName($funcionarioDao, $trim['decano']) ?></td>
-                                <td><?= getName($funcionarioDao, $trim['vice_decano_academica']) ?></td>
-                                <td><?= getName($funcionarioDao, $trim['vice_decano_cientifica']) ?></td>
+                                <td><?= $trim['decano']?></td>
+                                <td><?= $trim['vice_decano_academica'] ?></td>
+                                <td><?= $trim['vice_decano_cientifica']?></td>
                                 <td><?= $trim['data_abertura'] ?></td>
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>

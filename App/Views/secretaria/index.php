@@ -20,7 +20,7 @@
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section">
             <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
@@ -92,7 +92,7 @@
                                 <a class="btn btn-sm btn-outline-success" href=""><i class="bi bi-person-plus-fill"></i> Cadastrar Estudante</a>
                             </div>
                             <div class="col-md-3 col-lg-3">
-                                <a class="btn btn-sm btn-outline-primary" href=""><i class="bi bi-file-earmark-text-fill"></i> Nova Matrícula</a>
+                                <a class="btn btn-sm btn-outline-primary" href="./matricula.php"><i class="bi bi-file-earmark-text-fill"></i> Nova Matrícula</a>
                             </div>
                             <div class="col-md-3 col-lg-3">
                                 <a class="btn btn-sm btn-outline-warning" href=""><i class="bi bi-file-earmark-word-fill"></i> Tratar Requerimento</a>

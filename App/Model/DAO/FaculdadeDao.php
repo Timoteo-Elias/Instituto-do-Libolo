@@ -53,10 +53,18 @@
             }
 
             return false; // Retorna false se não encontrar nenhum e-mail
-        }
+        }	
 
         public function read(){
-            $sql = "SELECT * FROM faculdade";
+            $sql = "SELECT f.id_faculdade,
+                f.faculdade, f.codigo, f.data_abertura,
+                d.nome AS decano, 
+                vda.nome AS vice_decano_academica, 
+                vdc.nome AS vice_decano_cientifica FROM faculdade f
+            JOIN funcionario d ON f.decano = d.id_funcionario
+            JOIN funcionario vda ON f.vice_decano_academica = vda.id_funcionario
+            JOIN funcionario vdc ON f.vice_decano_cientifica = vdc.id_funcionario
+            ";
             $res = Connect::getConn()->query($sql);
             $faculdade = $res->rowCount()>0 ? $res->fetchAll(PDO::FETCH_ASSOC) : [];
             return $faculdade;
