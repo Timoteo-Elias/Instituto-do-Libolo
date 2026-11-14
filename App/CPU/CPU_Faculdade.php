@@ -18,9 +18,9 @@ use Model\Funcionario;
         $salvou = $faculdadecontroller->insert(
             trim($_POST['codigo'] ?? ''),
             trim($_POST['faculdade'] ?? ''),
-            trim($_POST['decano'] ?? ''),
-            trim($_POST['vice_decano_academica'] ?? ''),
-            trim($_POST['vice_decano_cientifica'] ?? ''),
+            trim((int)$_POST['decano'] ?? ''),
+            trim((int)$_POST['vice_decano_academica'] ?? ''),
+            trim((int)$_POST['vice_decano_cientifica'] ?? ''),
             trim($_POST['data_de_abertura'] ?? '')
         );
 

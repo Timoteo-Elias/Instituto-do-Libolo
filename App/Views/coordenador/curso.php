@@ -4,6 +4,16 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
+    require_once __DIR__ . '/../../Controller/CursoController.php';
+    require_once __DIR__ . '/../../Model/DAO/CursoDao.php';
+    require_once __DIR__ . '/../../Model/Curso.php';
+    require_once __DIR__ . '/../../Model/DAO/FuncionarioDao.php';
+
+
+    $cursoDao = new CursoDao(); 
+    $cursoController = new CursoController($cursoDao);
+    $cursos = $cursoController->index();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,13 +24,13 @@
     <link rel="stylesheet" href="../../../Public/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../../Public/CSS/style.css">
     <link rel="stylesheet" href="../../../Public/JS/action.js">
-    <title>Secretaria Geral</title>
+    <title>Coordenação Geral</title>
 </head>
 <body>
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section">
             <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
@@ -61,23 +71,27 @@
                             <tr>
                                 <th>Codigo</th>
                                 <th>Curso</th>
+                                <th>Coordenador</th>
                                 <th>Duração</th>
-                                <th>Data de Abertura</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody >
+
+                            <?php foreach($cursos as $trim): ?>
                             <tr class="fs-6">
-                                <td>FD-001</td>
-                                <td>Direiro</td>
-                                <td>5 anos</td> 
-                                <td>24-04-2004</td> 
+                                <td><?=$trim['codigo']?></td>
+                                <td><?=$trim['nome']?></td>
+                                <td><?=$trim['coordenador']?></td>
+                                <td><?=$trim['duracao']?> anos</td> 
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                     <button class="btn btn-sm btn-outline-success"><i class="bi bi-eye"></i></button>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
+
                         </tbody>
                     </table>
                 </div>

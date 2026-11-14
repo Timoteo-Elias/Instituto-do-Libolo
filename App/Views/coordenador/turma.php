@@ -4,6 +4,14 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
+    require_once __DIR__ . '/../../Controller/TurmaController.php';
+    require_once __DIR__ . '/../../Model/DAO/TurmaDao.php';
+    require_once __DIR__ . '/../../Model/Turma.php';
+
+    $turmaDao = new TurmaDao(); 
+    $turmaController = new TurmaController($turmaDao);
+    $turmas = $turmaController->index();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,7 +28,7 @@
     <section class="wrapper">
         <?php include_once '../resource/sidebar.php' ?>
 
-        <div class="section" style="">
+        <div class="section">
             <?php include_once '../resource/header.php'?>
             <div class="container p-4 body">
                 <div class="rounded shadow p-2 card-adm" style="background:azure;">
@@ -69,18 +77,20 @@
                             </tr>
                         </thead>
                         <tbody >
+                            <?php foreach($turmas as $trim):?>
                             <tr class="fs-6">
-                                <td>TM-001</td>
-                                <td>TM-A</td> 
-                                <td>Direiro</td>
-                                <td>5 anos</td> 
-                                <td>Tarde</td> 
-                                <td><span class="text-primary">60</span> Estudantes</td>  
+                                <td><?= $trim['codigo']?></td>
+                                <td><?= $trim['nome']?></td> 
+                                <td><?= $trim['curso']?></td>
+                                <td><?= $trim['nivel']?>º ano</td> 
+                                <td><?= $trim['periodo']?></td> 
+                                <td><span class="text-primary"><?= $trim["limite"] ?></span> Estudantes</td>  
                                 <td>
                                     <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
+                            <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>
